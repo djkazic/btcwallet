@@ -472,3 +472,19 @@ func openDB(dbPath string, noFreelistSync bool,
 	boltDB, err := bbolt.Open(dbPath, 0600, options)
 	return (*db)(boltDB), convertErr(err)
 }
+
+func UnderlineDB(d walletdb.DB) (*bbolt.DB, error) {
+	bdb, ok := d.(*db)
+	if !ok {
+		return nil, errors.New("not a bolt db")
+	}
+	return (*bbolt.DB)(bdb), nil
+}
+
+func UnderlineTX(tx walletdb.ReadWriteTx) (*bbolt.Tx, error) {
+	transact, ok := tx.(*transaction)
+	if !ok {
+		return nil, errors.New("not a bolt db transaction")
+	}
+	return transact.boltTx, nil
+}
