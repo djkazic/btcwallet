@@ -5,6 +5,7 @@
 package bdb
 
 import (
+	"errors"
 	"io"
 	"os"
 	"time"
