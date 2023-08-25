@@ -7,3 +7,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1
 	go.etcd.io/bbolt v1.3.5-0.20200615073812-232d8fc87f50
 )
+
+replace (
+	github.com/btcsuite/btcwallet/walletdb => github.com/djkazic/btcwallet/walletdb v1.6.0
+)
