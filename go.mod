@@ -54,3 +54,5 @@ require (
 )
 
 go 1.22
+
+replace github.com/btcsuite/btcwallet/txrules => github.com/djkazic/btcwallet/txrules v1.2.2-allow-dust
