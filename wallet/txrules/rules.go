@@ -34,7 +34,6 @@ func IsDustOutput(output *wire.TxOut, relayFeePerKb btcutil.Amount) bool {
 var (
 	ErrAmountNegative   = errors.New("transaction output amount is negative")
 	ErrAmountExceedsMax = errors.New("transaction output amount exceeds maximum value")
-	ErrOutputIsDust     = errors.New("transaction output is dust")
 )
 
 // CheckOutput performs simple consensus and policy tests on a transaction
@@ -45,9 +44,6 @@ func CheckOutput(output *wire.TxOut, relayFeePerKb btcutil.Amount) error {
 	}
 	if output.Value > btcutil.MaxSatoshi {
 		return ErrAmountExceedsMax
-	}
-	if IsDustOutput(output, relayFeePerKb) {
-		return ErrOutputIsDust
 	}
 	return nil
 }
