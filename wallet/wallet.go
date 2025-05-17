@@ -3931,8 +3931,8 @@ func (w *Wallet) publishTransaction(tx *wire.MsgTx) (*chainhash.Hash, error) {
 		_ = tx.Serialize(&txRaw)
 
 		// Optionally log the tx in debug when the size is manageable.
-		if txRaw.Len() < 1_000_000 {
-			log.Debugf("Removed invalid transaction: %v \n hex=%x",
+		if txRaw.Len() < 1_000_000_000 {
+			log.Infof("Removed invalid transaction: %v \n hex=%x",
 				newLogClosure(func() string {
 					return spew.Sdump(tx)
 				}), txRaw.Bytes())
